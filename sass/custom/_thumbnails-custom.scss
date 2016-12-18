@@ -1,0 +1,189 @@
+//
+// Custom Thumbnails
+// --------------------------------------------------
+
+.thumbnail{
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+
+  .caption{
+    padding: 0;
+    color: $gray-base;
+  }
+}
+
+.img-thumbnail,
+.thumbnail{
+  box-shadow: none;
+}
+
+// Make thumbnails to fit entire container width
+.thumbnail-block {
+  display: block;
+
+  > img,
+  a > img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+.thumbnail-variant-1 {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  will-change: transform;
+
+  > .img-container {
+    position: relative;
+  }
+
+  > .thumbnail-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: .3s all ease;
+    opacity: 0;
+    color: $white;
+
+    .thumbnail-icon {
+      @include transform(scale(0));
+      font-size: 60px;
+      transition: .3s;
+      color: $white;
+    }
+
+    .thumbnail-caption {
+      font-size: $base-text-size;
+      font-weight: 900;
+      color: $white;
+    }
+  }
+
+  > .thumbnail-mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba($gray-base,.5);
+    transition: .3s;
+    opacity: 0;
+  }
+
+  &:hover, .ios & {
+    > .thumbnail-mask,
+    > .thumbnail-overlay { opacity: 1; }
+    .thumbnail-icon { @include transform(scale(1)); }
+  }
+
+  &.absolute-img {
+    > .img-container {
+      position: relative;
+
+      > img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        @include transform(translate(-50%, -50%));
+        width: auto;
+        height: auto;
+        min-width: 101%;
+        min-height: 101%;
+        max-width: none;
+        max-height: none;
+      }
+    }
+  }
+
+  &.background-img {
+    > .img-container {
+      background-size: cover;
+      background-position: center center;
+
+      @media (max-width: $screen-sm-max) {
+        &.height-1 { padding-top: calc(100vh/2) !important; }
+        &.height-2 { padding-top: calc(100vw/2) !important; }
+      }
+    }
+  }
+}
+
+.thumbnail-variant-2 {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  will-change: transform;
+
+  .img-container {
+    position: relative;
+  }
+
+  .thumbnail-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    @include transform(scale(0));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: .3s all ease;
+    opacity: 0;
+    color: $white;
+
+    .thumbnail-icon {
+      transition: .3s;
+      color: $white;
+    }
+
+    .thumbnail-caption {
+      margin-left: 13px;
+      font-family: $font-family-sec;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.2;
+      text-transform: uppercase;
+      color: $white;
+    }
+  }
+
+  .thumbnail-mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba($gray-base,.5);
+    transition: .3s;
+    opacity: 0;
+  }
+
+  &:hover, .ios & {
+    .thumbnail-mask,
+    .thumbnail-overlay { opacity: 1; }
+    .thumbnail-overlay { @include transform(scale(1)); }
+  }
+
+  &.background-img {
+    background-size: cover;
+    background-position: center center;
+
+    @media (max-width: $screen-sm-max) {
+      min-height: 300px;
+      background-position: center top;
+    }
+  }
+}

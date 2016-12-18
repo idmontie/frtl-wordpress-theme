@@ -1,0 +1,56 @@
+/*
+* Fullwidth Layout
+*/
+
+.rd-navbar-default {
+  .rd-navbar-fullwidth {
+    display: block;
+
+    .rd-navbar-inner {
+      position: relative;
+      @include display-flex;
+      @include justify-content(space-between);
+      @include align-items(center);
+      @include flex-wrap(wrap);
+
+      .rd-navbar-cell {
+        @include flex-shrink(0);
+      }
+
+      .rd-navbar-nav-wrap {
+        @include flex-basis(auto);
+      }
+    }
+
+    .rd-navbar-brand {
+      @include brand-size-conversion(.8);
+    }
+
+    .rd-navbar-nav-wrap {
+      display: block;
+    }
+
+    .rd-navbar-nav {
+      display: block;
+      width: auto;
+
+      > li {
+        & > a { padding: 10px 0; }
+        & + li { margin-left: 15px; }
+      }
+    }
+
+    // RD Navbar Clone
+    &.rd-navbar--is-clone { }
+
+    // RD Navbar Stuck
+    &.rd-navbar--is-stuck,
+    &.rd-navbar--is-clone {
+      .rd-navbar-fullwidth-collapse { display: none; }
+    }
+
+    // RD Navbar States
+    .rd-navbar-fullwidth-visible { display: block; }
+    .rd-navbar-fullwidth-hidden { display: none; }
+  }
+}

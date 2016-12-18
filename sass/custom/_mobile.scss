@@ -1,0 +1,27 @@
+@media (max-width: $screen-xs-max) {
+  #wpadminbar {
+    display: none;
+  }
+}
+
+@media (max-width: $screen-sm-max) {
+  .rd-navbar-brand img {
+    height: 50px !important;
+  }
+
+  html.rd-navbar-fixed-linked body {
+    padding-top: 4px !important;
+  }
+
+
+  .section-btns {
+    .btn {
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .btn + .btn {
+      margin-left: 0;
+    }
+  }
+}

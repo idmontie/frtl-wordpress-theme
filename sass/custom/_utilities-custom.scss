@@ -1,0 +1,264 @@
+//
+// Custom Utilities
+// --------------------------------------------------
+
+.row-no-gutter {
+  > [class*="col-"] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.link { display: block; }
+.relative { position: relative; }
+.underline {}
+
+.vertical-limiter-1 {
+  height: calc(100vh - 50px); // [screen height] - [navbar height]
+  @media (min-width: $screen-sm-min) { height: 100vh; }
+}
+
+.vertical-limiter-2 {
+  height: auto;
+  @media (min-width: $screen-md-min) { height: calc(100vh - 60px); }
+  @media (min-width: $screen-lg-min) { height: calc(100vh - 74px); }
+}
+
+.vertical-limiter-3 {
+  min-height: calc(100vh - 50px - 207px);
+  @media (min-width: $screen-sm-min) { min-height: calc(100vh - 59px - 159px); }
+  @media (min-width: $screen-md-min) { height: calc(100vh - 60px); }
+  @media (min-width: $screen-lg-min) { height: calc(100vh - 74px); }
+}
+
+.flex-center {
+  @include display-flex;
+  @include align-items(center);
+  @include justify-content(center);
+
+  > * { @include flex-grow(1); }
+
+  .ie-11 & {
+    @include justify-content(flex-start);
+    > * { @include flex-basis(100%); }
+  }
+}
+
+.flex-center--no-grow {
+  > * { @include flex-grow(initial); }
+}
+
+.opacity-20 { opacity: .2; }
+.relative { position: relative; }
+
+.absolute-block {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  @include transform(translateX(-50%));
+  width: 100%;
+
+  @media (min-width: $screen-sm-min) {
+    bottom: 0;
+  }
+
+  @media (min-width: $screen-lg-1) and (min-height: $screen-height-3){
+    bottom: 6.45%;
+  }
+}
+
+
+// Divider
+
+.divider {
+  display: block;
+  color: inherit;
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+
+  &:before {
+    content: "";
+    display: inline-block;
+    width: 50px;
+    vertical-align: top;
+    border-top: 4px solid;
+  }
+}
+
+
+// Decorative lines
+
+.decorative-line-1 {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  @include transform(translate(50%, -50%));
+  width: 106px;
+  height: 3px;
+  background: $white;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: $gray-dark;
+  }
+
+  @media (min-width: $screen-md-min) {
+    display: block;
+  }
+}
+
+.decorative-line-2 {
+  @extend .decorative-line-1;
+  &:before {
+    left: auto;
+    right: 0;
+  }
+}
+
+
+// Bordered
+
+@include make-bordered(2px, $white, $medias);
+
+
+
+// Brand
+
+footer .rd-navbar-brand {
+  vertical-align: middle;
+  @include brand-size-conversion(.6758);
+  @media (min-width: $screen-sm-min) { @include brand-size-conversion(.8); }
+  @media (min-width: $screen-lg-min) { @include brand-size-conversion(1); }
+}
+
+
+// Hover effects
+
+.page .hover-effect-2 {
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 0;
+    border-bottom: 2px solid;
+    transform: translateX(-50%);
+    transition: width 0.2s cubic-bezier(.53,.4,.4,1.72) 0.1s;
+
+    .ie-11 &,
+    .ie-edge & { max-width: 100%; }
+    .ios & { content: none; }
+  }
+
+  &:hover {
+    &:before {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+}
+
+
+// Contact info
+
+.contact-info {
+  address {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 28px;
+    text-transform: uppercase;
+    color: $gray-dark;
+  }
+
+  label {
+    width: 100%;
+  }
+
+  dl {
+    display: block;
+
+    dt {
+      display: inline-block;
+      &:after { content: ":"; }
+    }
+
+    dd {
+      display: inline-block;
+    }
+
+    &:not(:last-child) {
+      dt + dd { margin-left: 40px; }
+    }
+  }
+
+  a:hover {
+    color: $gray-dark;
+    text-decoration: underline;
+  }
+
+  address + dl { margin-top: 44px; }
+
+  input {
+    width: 100%;
+  }
+}
+
+
+// REMOVE ME
+
+%test-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  height: 100px;
+  background: black;
+  color: white;
+  text-transform: uppercase;
+  font-size: 40px;
+  font-weight: 700;
+
+  &.emp { background: gray; }
+  &.con { background: orange; }
+}
+
+.test-block-0 {
+  @extend %test-block;
+}
+
+.test-block-1 {
+  @extend %test-block;
+  height: 220px;
+}
+
+.test-block-2 {
+  @extend %test-block;
+  height: 340px;
+}
+
+.padding-20 {
+  padding: 10px !important;
+
+  @media (min-width: 768px) {
+    padding: 20px !important;
+  }
+}
+
+.padding-70 {
+  @media (min-width: 768px) {
+    padding: 70px !important;
+  }
+}
+
+.inline {
+  display: inline-block;
+}

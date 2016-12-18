@@ -1,0 +1,399 @@
+//
+// Custom typography
+// --------------------------------------------------
+
+// Page header
+// -------------------------
+
+.page-header {
+}
+
+// Fonts
+// -------------------------
+
+.font-default {
+  font-family: $font-family-base;
+}
+
+// Basic Typography
+// -------------------------
+
+#{headings()} {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+h1, .h1 {
+  font-family: $font-family-sec;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+
+  @include make-heading-layout((
+          0: (36px, 1),
+          $screen-sm-min: ($font-size-h1 * .5, 0.81),
+          $screen-md-min: ($font-size-h1 * .6, 0.81),
+          ($screen-lg-2, $screen-height-1): ($font-size-h1, $font-lh-h1)
+  ));
+}
+
+h2, .h2 {
+  font-family: $font-family-sec;
+
+  @include make-heading-layout((
+          0: (32px, 1.5),
+          $screen-sm-min: ($font-size-h2 * .6, 1.2),
+          $screen-md-min: ($font-size-h2 * .8, 1.2),
+          ($screen-lg-min, $screen-height-1): ($font-size-h2, $font-lh-h2)
+  ));
+
+  .small-h2s & {
+    @include make-heading-layout((
+            0: (32px, 1.5),
+            $screen-sm-min: (20px, 1.2),
+            $screen-md-min: (30px, 1.2),
+            ($screen-lg-min, $screen-height-1): (30px, $font-lh-h2)
+    ));
+  }
+
+}
+
+
+h3, .h3 {
+  font-family: $font-family-sec;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+
+  @include make-heading-layout((
+          0: (28px, 1.5),
+          $screen-md-min: ($font-size-h3 * .5, 1.2),
+          $screen-lg-min: ($font-size-h3, $font-lh-h3)
+  ));
+}
+
+h4, .h4 {
+  font-family: $font-family-sec;
+  font-weight: 400;
+  text-transform: uppercase;
+
+  @include make-heading-layout((
+          0: (24px, 1.5),
+          $screen-lg-min: ($font-size-h4, $font-lh-h4)
+  ));
+}
+
+h5, .h5 {
+  text-transform: uppercase;
+
+  @include make-heading-layout((
+          0: (20px, 1.5),
+          $screen-sm-min: ($font-size-h5, $font-lh-h5)
+  ));
+}
+
+h6, .h6 {
+  font-family: $font-family-sec;
+  letter-spacing: .6em;
+  text-transform: uppercase;
+
+  @include make-heading-layout((
+          0: (14px, 1.5),
+          $screen-sm-min: ($font-size-h6, $font-lh-h6)
+  ));
+
+  &.small { letter-spacing: .2em; }
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  a { transition: .3s all ease; }
+  a:hover { color: $brand-primary; }
+  .small { color: $gray-dark; }
+}
+
+p,
+.p,
+.list {  }
+
+@media (min-width: $screen-xs) {
+  .big {
+    font-size: $font-size-large;
+    line-height: floor(($font-size-large * $line-height-large));
+
+    h1 &,
+    .h1 & {
+      font-size: 142.22%;
+      line-height: 1.125;
+    }
+
+    h2 &,
+    .h2 & {
+      font-size: 147.36%;
+      line-height: 1.142857142857143;
+    }
+  }
+}
+
+small,
+.small {
+  font-size: $font-size-small;
+  line-height: floor(($font-size-small * $line-height-small));
+}
+
+code {
+  padding: 5px 7px;
+  font-size: 75%;
+  color: $brand-danger;
+  background-color: $gray-lighter;
+  border-radius: 2px;
+}
+
+mark, .mark {
+  background-color: $brand-primary;
+  padding: .1em;
+}
+
+// Lists
+// -------------------------
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list {
+  > li + li {
+    margin-top: 10px;
+  }
+}
+
+// List inline
+//
+
+.list-inline {
+  li { padding: 0; }
+  @include make-grid-indents(li, 10px, 10px);
+
+  @media (min-width: $screen-md-min) {
+    @include make-grid-indents(li, 28px, 10px);
+  }
+}
+
+
+// Description Lists
+dl {
+  margin: 0;
+}
+
+// List terms
+//
+
+.list-terms {
+  dt + dd { margin-top: 10px; }
+  dd + dt { margin-top: 20px; }
+
+  @media (min-width: $screen-sm-min) {
+    dt + dd { margin-top: 20px; }
+    dd + dt { margin-top: 30px; }
+  }
+
+  @media (min-width: $screen-lg-min) {
+    dt + dd { margin-top: 30px; }
+    dd + dt { margin-top: 40px; }
+  }
+
+  @media (min-width: $screen-lg-2) and (min-width: $screen-height-2) {
+    dt + dd { margin-top: 42px; }
+    dd + dt { margin-top: 56px; }
+  }
+}
+
+// List index
+//
+
+.list-index {
+  counter-reset: li;
+
+  li {
+    .list-index-counter {
+      &:before {
+        content: counter(li, decimal-leading-zero);
+        counter-increment: li;
+      }
+    }
+  }
+}
+
+// List marked
+//
+
+.list-marked {
+  li {
+    position: relative;
+    padding-left: 25px;
+    font-weight: 400;
+    color: $gray-dark;
+
+    @include make-heading-layout((
+            0: (19px, 1.1),
+            $screen-sm-min: (24px * .8, 1.1),
+            $screen-md-min: (24px, 1.2)
+    ));
+
+    &:before {
+      content: '\e038';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      @include transform (translateY(-50%));
+      display: inline-block;
+      font-family: $mi;
+      font-size: 17px;
+      color: $gray-dark;
+    }
+
+    & + li { margin-top: 10px; }
+
+    @media (min-width: $screen-md-min) {
+      padding-left: 47px;
+    }
+
+    @media (min-width: $screen-lg-min) {
+      & + li { margin-top: 41px; }
+    }
+  }
+}
+
+
+// Misc
+// -------------------------
+
+// Blockquotes
+blockquote {
+   q { &:before, &:after{ content: none; } }
+  cite { font-style: normal; }
+}
+
+// Addresses
+address {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+// Backgrounds
+// -------------------------
+
+// Contextual backgrounds
+//
+%context-dark {
+  &, #{headings()}, a { color: $white; }
+  a:hover { color: $white; }
+  @at-root a#{&} { &:hover { color: $white; }}
+}
+
+.bg-gray-base {
+  @include bg-variant-custom(#{$gray-base});
+  @extend %context-dark;
+}
+
+.bg-gray {
+  @include bg-variant-custom(#{$gray});
+}
+
+.bg-image-fixed-1 {
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.bg-image-fixed-2 {
+  background-attachment: fixed;
+  background-color: #332f36;
+  background-size: cover;
+  @extend %context-dark;
+}
+
+.bg-image-1 {
+  background-size: cover;
+  background-position: center center;
+  @extend %context-dark;
+}
+
+.bg-image-2,
+.bg-image-3,
+.bg-image-4,
+.bg-image-5 {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+}
+
+.bg-image-2 { background-image: url("../images/bg-image-02-2050x1343.jpg"); }
+.bg-image-3 { background-image: url("../images/bg-image-03-2050x2000.jpg"); }
+.bg-image-4 { background-image: url("../images/bg-image-04-2050x1445.jpg"); }
+.bg-image-5 { background-image: url("../images/bg-image-05-2050x1637.jpg"); }
+
+
+.bg-image {
+  background-image: url("../images/home-02-1025x1125.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+
+
+// Colors
+// -------------------------
+
+// Contextual colors
+//
+
+.page {
+  @include text-emphasis-variant('.text-primary', $brand-primary);
+  @include text-emphasis-variant('.text-dark', $gray-dark, $gray);
+  @include text-emphasis-variant('.text-gray', $gray);
+  @include text-emphasis-variant('.text-white', $white);
+}
+
+
+// Blockquotes
+// -------------------------
+blockquote {
+  padding: 0;
+  margin: 0;
+  font-size: $blockquote-font-size;
+  border-left: none;
+
+  p, ul, ol { margin-bottom: 0; }
+
+  cite {
+    font-family: $font-family-sec;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  * + img,
+  * + .link { margin-top: 15px; }
+
+  @media (min-width: $screen-md-min) {
+    * + img { margin-top: 48px; }
+    * + .link { margin-top: 30px; }
+  }
+}
+
+// Description Lists
+// -------------------------
+
+dd, dt {
+  line-height: $line-height-base;
+  font-weight: $font-weight-base;
+}

@@ -1,0 +1,26 @@
+//
+// Posts
+// --------------------------------------------------
+
+// Meta
+// -------------------------
+
+.post-meta {
+  .meta-block { display: inline-block; }
+}
+
+// Blog post
+// -------------------------
+
+.news-post {
+  * + p { margin-top: 15px; }
+  * + .post-meta { margin-top: 15px; }
+  * + .post-heading { margin-top: 15px; }
+  * + .link { margin-top: 15px; }
+
+  @media (min-width: $screen-lg-min) {
+    * + p { margin-top: 41px; }
+    * + .post-meta { margin-top: 53px; }
+    * + .link { margin-top: 53px; }
+  }
+}

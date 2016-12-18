@@ -1,0 +1,50 @@
+/*
+* @subsection   ToTop
+* @license      MIT license - http://opensource.org/licenses/MIT
+* @version      1.0.0
+*/
+.ui-to-top {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  @include transform(translateY(100px));
+  z-index: 20;
+  width: 59px;
+  height: 59px;
+  font-size: 24px;
+  line-height: 59px;
+  border-radius: 50%;
+  overflow: hidden;
+  text-align: center;
+  text-decoration: none;
+  transition: .3s all ease;
+
+  &, &:focus {
+    color: $gray-dark;
+    background: $white;
+  }
+
+  &:hover {
+    color: $white;
+    background: $gray-dark;
+    text-decoration: none;
+  }
+
+  &.active{
+    @include transform(translateY(0));
+  }
+}
+
+.mobile .ui-to-top,
+.tablet .ui-to-top {
+  display: none !important;
+}
+
+@media (min-width: $screen-xs-min){
+  .ui-to-top {
+    right: 40px;
+    bottom: 40px;
+  }
+}
+
+

@@ -1,0 +1,18 @@
+{
+  "name": "frtl",
+  "version": "1.0.0",
+  "description": "[![Build Status](https://travis-ci.org/Automattic/_s.svg?branch=master)](https://travis-ci.org/Automattic/_s)",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "node-sass --include-path sass sass/style.scss css/style.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm frtl.zip; zip -r frtl.zip ./ -x \"package.json\" -x \\*sass\\* -x  \\*.git\\* -x \\*.DS_Store\\* -x \\*node_modules\\* -x \"frtl.zip\" -x \"npm-debug.log\" -x \".jscsrc\" -x \".jshintignore\" -x \"README.md\" -x \"readme.txt\""
+  },
+  "author": "Ivan Montiel <idmontie@asu.edu> (https://github.com/idmontie)",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "node-sass": "^3.13.0",
+    "nodemon": "^1.11.0"
+  }
+}

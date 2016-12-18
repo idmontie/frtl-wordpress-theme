@@ -1,0 +1,20 @@
+//
+// Sections
+// --------------------------------------------------
+
+// Section Spacing
+// -------------------------
+
+$insets: (50px, 84px, 121px, 174px, 199px, 213px, 244px, 263px, 309px, 345px);
+
+@include indent-responsive(section, '', (padding-top, padding-bottom), $medias, $insets);
+@include indent-responsive(section, top, padding-top, $medias, $insets);
+@include indent-responsive(section, bottom, padding-bottom, $medias, $insets);
+
+.section-btns {
+  margin-top: 40px;
+
+  .btn + .btn {
+    margin-left: 40px;
+  }
+}

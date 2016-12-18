@@ -1,0 +1,84 @@
+//
+// Offsets
+// --------------------------------------------------
+
+* + h5            { margin-top: 20px; }
+* + h6            { margin-top: 10px; }
+* + .list-inline  { margin-top: 5px; }
+* + .icon-lg      { margin-top: 5px; }
+* + .divider      { margin-top: 5px; }
+* + .link         { margin-top: 20px; }
+* + .contact-info { margin-top: 20px; }
+* + .list-terms   { margin-top: 20px; }
+h3 + p            { margin-top: 10px; }
+h5 + p            { margin-top: 10px; }
+h6 + .btn         { margin-top: 15px; }
+
+@media (min-width: $screen-sm-min) {
+  * + .list-inline  { margin-top: 10px; }
+  * + .icon-lg      { margin-top: 10px; }
+  * + .divider      { margin-top: 10px; }
+  * + .link         { margin-top: 30px; }
+  * + .contact-info { margin-top: 30px; }
+  * + .list-terms   { margin-top: 30px; }
+  h3 + p            { margin-top: 20px; }
+  h5 + p            { margin-top: 20px; }
+}
+
+@media (min-width: $screen-lg-min) {
+  * + h5            { margin-top: 30px; }
+  * + h6            { margin-top: 12px; }
+  * + .divider      { margin-top: 29px; }
+  * + .link         { margin-top: 40px; }
+  * + .contact-info { margin-top: 40px; }
+  * + .list-terms   { margin-top: 40px; }
+  h3 + p            { margin-top: 30px; }
+  h5 + p            { margin-top: 30px; }
+  h6 + .btn         { margin-top: 28px; }
+}
+
+@media (min-width: $screen-lg-2) and (min-height: $screen-height-2) {
+  * + h6            { margin-top: 20px; }
+  * + .list-inline  { margin-top: 28px; }
+  * + .link         { margin-top: 81px; }
+  * + .contact-info { margin-top: 67px; }
+  * + .list-terms   { margin-top: 66px; }
+  h3 + p            { margin-top: 66px; }
+  h5 + p            { margin-top: 42px; }
+  h6 + .btn         { margin-top: 48px; }
+}
+
+@media (min-width: $screen-lg-2) and (min-height: $screen-height-3) {
+  * + .icon-lg      { margin-top: 29px; }
+}
+
+// Insets
+// -------------------------
+
+$insets: (0, 15px, 30px, 100px);
+
+@include indent-responsive(inset, '', (padding-left, padding-right), $medias, $insets);
+@include indent-responsive(inset, left, padding-left, $medias, $insets);
+@include indent-responsive(inset, right, padding-right, $medias, $insets);
+
+
+// Elements
+// -------------------------
+
+
+// Grid
+// -------------------------
+
+
+// Sections
+// -------------------------
+
+
+// Responsive
+// -------------------------
+
+$offsets: (0, 4px, 10px, 20px, 27px, 40px, 60px, 66px, 72px, 76px, 86px, 129px);
+
+html .page{
+  @include indent-responsive(offset, top, margin-top, $medias, $offsets);
+}

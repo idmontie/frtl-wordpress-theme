@@ -1,0 +1,16 @@
+.menu-footer-menu-container {
+  display: block;
+}
+
+.footer-menu-list {
+  display: inline-block;
+
+  li {
+    display: inline-block;
+    margin-left: 10px;
+  }
+
+  li + li {
+    margin-left: 20px;
+  }
+}

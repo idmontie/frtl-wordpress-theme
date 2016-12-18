@@ -1,0 +1,44 @@
+//
+// Icons
+// --------------------------------------------------
+
+// Base styles
+// --------------------------------------------------
+
+.icon {
+  display: inline-block;
+  text-align: center;
+
+  &:before {
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    font-style: normal;
+    line-height: inherit;
+    vertical-align: top;
+    speak: none;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: .3s;
+  }
+}
+
+
+// Alternate icons
+// --------------------------------------------------
+
+.icon-default { @include make-icon-appearance($gray-dark); }
+.icon-white { @include make-icon-appearance($clr: $white, $clr-hover: rgba(white,.5)); }
+
+
+// Button Sizes
+// --------------------------------------------------
+
+$icons-size-ratios-default: (0: .5, $screen-sm-min: .75, $screen-md-min: 1);
+
+.icon-xs { @include make-icon-layout(20px, 17px); }
+.icon-sm { @include make-icon-layout(25px, 20px); }
+.icon-md { @include make-icon-layout(50px, 44px); }
+.icon-lg { @include make-icon-layout(70px, 66px, $icons-size-ratios-default); }
+.icon-xl { @include make-icon-layout(95px, 90px, $icons-size-ratios-default); }

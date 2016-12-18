@@ -1,0 +1,62 @@
+/*
+* Static Layout
+*/
+
+.rd-navbar-default {
+  .rd-navbar-static {
+    display: block;
+
+    .rd-navbar-inner {
+      position: relative;
+      max-width: $rd-navbar-width;
+      margin-left: auto;
+      margin-right: auto;
+      @include display-flex;
+      @include justify-content(space-between);
+      @include align-items(center);
+      @include flex-wrap(wrap);
+
+      .rd-navbar-cell {
+        @include flex-shrink(0);
+      }
+    }
+
+    .rd-navbar-nav-wrap {
+      display: block;
+    }
+
+    .rd-navbar-nav {
+      > li {
+        margin-top: 40px;
+        margin-bottom: 40px;
+
+        & > a { padding: 13px 0; }
+        & + li { margin-left: 54px; }
+
+        @media (min-width: $screen-lg-2) and (min-height: $screen-height-2) {
+          margin-top: 83px;
+          margin-bottom: 88px;
+        }
+      }
+
+    }
+
+    // RD Navbar Clone
+    &.rd-navbar--is-clone { }
+
+    // RD Navbar Stuck
+    &.rd-navbar--is-stuck,
+    &.rd-navbar--is-clone {
+      .rd-navbar-nav > li {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      .rd-navbar-static-collapse { display: none; }
+    }
+
+    // RD Navbar States
+    .rd-navbar-static--visible { display: block; }
+    .rd-navbar-static--hidden { display: none; }
+  }
+}

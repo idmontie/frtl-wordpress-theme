@@ -1,0 +1,123 @@
+// Custom utilities mixins
+// ------------------------------------
+
+@mixin make-responsive($preffix, $medias, $rule, $value, $postfix: null) {
+  @if($postfix) { $postfix: "-" + $postfix; }
+  @else { $postfix: ""; }
+
+  @each $resolution, $alias in $medias {
+    @if ($resolution == 0) {
+      #{$preffix}#{$postfix} { #{$rule}: $value; }
+    }
+
+    @else {
+      @media (min-width: $resolution) {
+        #{$preffix}-#{$alias}#{$postfix} { #{$rule}: $value; }
+      }
+    }
+
+  }
+}
+
+
+@mixin make-grid-indents($element, $left-indent, $top-indent: $left-indent, $on-grid: false) {
+  @include transform(translateY(-$top-indent));
+  @if($on-grid == false) { margin-left: -$left-indent; }
+  margin-bottom: -$top-indent;
+
+  > #{$element} {
+    margin-top: $top-indent;
+    margin-left: $left-indent;
+  }
+}
+
+
+@mixin uc__size-conversion($size-ratio) {
+  font-size: nth($size-ratio, 1);
+  line-height: nth($size-ratio, 2);
+  @if(length($size-ratio) >= 3) {
+    &:first-letter { margin-left: nth($size-ratio, 3); }
+  }
+}
+
+@mixin uc__make-size-ratio($size-ratios) {
+  @each $resolution, $size-ratio in $size-ratios {
+    @if ($resolution == 0) {
+      @if ($size-ratio != none) {
+        @include uc__size-conversion($size-ratio);
+      }
+    } @else if type-of($resolution) == number {
+      @if ($size-ratio != none) {
+        @media (min-width: $resolution) {
+          @include uc__size-conversion($size-ratio);
+        }
+      }
+    } @else if type-of($resolution) == list {
+      @if ($size-ratio != none) {
+        @media (min-width: nth($resolution, 1)) and (min-height: nth($resolution, 2)) {
+          @include uc__size-conversion($size-ratio);
+        }
+      }
+    }
+  }
+}
+
+@mixin make-heading-layout($size-ratios) {
+  @include uc__make-size-ratio($size-ratios);
+}
+
+
+@mixin brand-size-conversion($size-ratio) {
+  .brand-name, .brand-logo {
+    line-height: 74px * $size-ratio;
+  }
+
+  .brand-name {
+    margin-left: 13px * $size-ratio;
+    font-size: 20px * $size-ratio;
+  }
+
+  .brand-logo {
+    height: 74px * $size-ratio;
+    font-size: 74px * $size-ratio;
+    &:before { margin-left: -8px * $size-ratio; }
+  }
+}
+
+@mixin uc__bordered($width, $color, $pos) {
+  @if $pos == "br" {
+    border-bottom: $width solid $color;
+    border-right: $width solid $color;
+  } @else if $pos == "b" {
+    border-right: none;
+    border-bottom: $width solid $color;
+  } @else if $pos == "r" {
+    border-right: $width solid $color;
+    border-bottom: none;
+  } @else if $pos == null {
+    border: $width/2 solid $color;
+  }
+  @at-root a#{&}:hover { border-color: $color; }
+}
+
+@mixin uc__make-bordered-medias($width, $color, $medias) {
+  @each $resolution, $alias in $medias {
+    @if ($resolution == 0) {
+      .bordered-br { @include uc__bordered($width, $color, "br"); }
+      .bordered-b { @include uc__bordered($width, $color, "b"); }
+      .bordered-r { @include uc__bordered($width, $color, "r"); }
+      .bordered { @include uc__bordered($width, $color, null); }
+    } @else {
+      @media (min-width: $resolution) {
+        .bordered-#{$alias}-br { @include uc__bordered($width, $color, "br"); }
+        .bordered-#{$alias}-b { @include uc__bordered($width, $color, "b"); }
+        .bordered-#{$alias}-r { @include uc__bordered($width, $color, "r"); }
+        .bordered-#{$alias} { @include uc__bordered($width, $color, null); }
+      }
+    }
+  }
+}
+
+@mixin make-bordered($width, $color, $medias) {
+  @include uc__make-bordered-medias($width, $color, $medias);
+}
