@@ -45,7 +45,7 @@
 						 </div>
 					 </div>
 
-					 <div class="rd-navbar-brand">
+					 <div class="rd-navbar-brand block">
 						 <div class="brand-name small-text">
 							<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?> &#169;
 							<span id="copyright-year"></span> &bull;

@@ -20,8 +20,12 @@ get_header();
        <h3 class="capitalize"><?php echo get_field('home_header_slogan_text'); ?></h2>
 
         <div class="section-btns">
-          <a href="<?php echo esc_url( home_url( '/venues' ) ); ?>" class="btn btn-md btn-info btn-width-lg-370 btn-width-230">Find A Location Near You &rsaquo;</a>
-          <a href="<?php echo esc_url( home_url( '/about' ) ); ?>" class="btn btn-md btn-white btn-width-lg-370 btn-width-230">Learn More</a>
+          <a href="<?php echo esc_url( home_url( '/venues' ) ); ?>" class="btn btn-md btn-info btn-width-lg-370 btn-width-230">
+            <?php echo get_field('home_header_event_text'); ?>
+          </a>
+          <a href="<?php echo esc_url( home_url( '/about' ) ); ?>" class="btn btn-md btn-white btn-width-lg-370 btn-width-230">
+            <?php echo get_field('home_header_about_text'); ?>
+          </a>
         </div>
       </div>
       </div>
@@ -36,12 +40,12 @@ get_header();
 </section>
 <!-- Page Content-->
 <main class="page-content">
- <section id="welcome" class="section-50 section-lg-213 section-lg-bottom-50">
+ <section id="welcome" class="section-50 section-lg-174 section-lg-bottom-174">
    <div class="shell text-center">
      <h3><span><?php echo get_field('home_section_1_title'); ?></span><span class="divider"></span></h3>
      <div class="range range-xs-center offset-top-40 offset-lg-top-72">
        <div class="cell-xs-10">
-         <?php echo do_shortcode( '[evp_embed_video url="' . get_field( 'home_video' ) . '"]' ); ?>
+         <?php echo get_field('home_video_html'); ?>
        </div>
        <div class="cell-md-10 offset-top-40 offset-lg-top-60">
          <h4><?php echo get_field('home_section_1_subtitle'); ?></h4>

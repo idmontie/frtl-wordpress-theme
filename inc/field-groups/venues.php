@@ -8,6 +8,7 @@ if(function_exists("register_field_group"))
 			array (
 				'key' => 'field_5899f558a7b05',
 				'label' => 'Title',
+				'name' => 'venues_title',
         'type' => 'text',
 				'default_value' => 'Our Venues and Locations',
 				'placeholder' => '',
@@ -15,6 +16,17 @@ if(function_exists("register_field_group"))
 				'append' => '',
 				'formatting' => 'html',
 				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_5850ddfd0dd7f',
+				'label' => 'Venues Image',
+				'name' => 'venues_image',
+				'type' => 'image',
+				'instructions' => 'The splash image for the top of your venues page',
+				'required' => 1,
+				'save_format' => 'url',
+				'preview_size' => 'thumbnail',
+				'library' => 'all',
 			),
 			array (
 				'key' => 'field_5855f58ba7f17',

@@ -10,10 +10,26 @@
 get_header();
 ?>
 <section
-	class="flex-center relative section-50 section-md-121 section-lge-213"
+	class="flex-center relative section-84 section-md-199 section-lg-199"
 >
   <div class="shell text-center">
-    <h3><span><?php echo get_field('venues_title'); ?></span><span class="divider"></span></h3>
+    <h3>
+			<span><?php echo get_field('venues_title'); ?></span>
+			<span class="divider"></span>
+		</h3>
+
+		<?php
+			if ( ! empty( get_field( 'venues_image' ) ) ):
+		?>
+		<div class="section-84">
+			<img style="max-width: 800px; width: 100%;" src="<?php echo get_field('venues_image'); ?>" />
+		</div>
+
+		<h3><span class="divider"></span></h3>
+    <?php
+			endif;
+		?>
+
     <div class="text-left offset-top-40 offset-lg-top-129">
       <?php
         $venue_map = array();
@@ -78,7 +94,7 @@ get_header();
         }
       ?>
 
-      <section class="bg-image-2 section-50 section-lg-199">
+      <section class="bg-image-2 section-50 section-lg-199 section-lg-bottom-50">
         <div class="shell text-center">
           <?php echo get_field('venues_contact_content'); ?>
 

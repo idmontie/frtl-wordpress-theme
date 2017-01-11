@@ -2,6 +2,10 @@
 // Custom Utilities
 // --------------------------------------------------
 
+.block {
+  display: block !important;
+}
+
 .row-no-gutter {
   > [class*="col-"] {
     padding-left: 0;
@@ -136,6 +140,24 @@ footer .rd-navbar-brand {
   @include brand-size-conversion(.6758);
   @media (min-width: $screen-sm-min) { @include brand-size-conversion(.8); }
   @media (min-width: $screen-lg-min) { @include brand-size-conversion(1); }
+
+  .brand-name {
+    letter-spacing: 0.2em;
+  }
+}
+
+footer .brand-name.small-text {
+  letter-spacing: 0.1em;
+}
+
+footer .footer-menu-list {
+  margin-left: 2px;
+}
+
+footer .menu-item {
+  @media (max-width: $screen-lg) {
+    font-size: 14px;
+  }
 }
 
 
